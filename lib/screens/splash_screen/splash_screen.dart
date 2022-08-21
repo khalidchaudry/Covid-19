@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:covid_19/screens/world_states_screen/world_states_screen.dart';
+import 'package:covid_19/screens/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -25,8 +25,9 @@ class _SplashScreenState extends State<SplashScreen>
   );
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -34,8 +35,8 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     Timer(
         const Duration(seconds: 5),
-        () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const WorldStateScreen())));
+        () => Navigator.pushNamedAndRemoveUntil(
+            context, Routes.worldDataScreen, (route) => false));
   }
 
   late AnimationController controller =
